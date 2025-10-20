@@ -1,0 +1,27 @@
+{
+  "name": "heart-message-generator",
+  "version": "1.0.0",
+  "description": "Beautiful heart message generator with custom greetings and themes",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve",
+    "dev": "npx serve",
+    "deploy": "echo 'See DEPLOYMENT_GUIDE.md for deployment instructions'"
+  },
+  "keywords": [
+    "heart",
+    "message",
+    "generator",
+    "greeting",
+    "love",
+    "birthday",
+    "anniversary"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/heart-message-generator"
+  }
+}
+
