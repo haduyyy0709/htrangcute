@@ -39,8 +39,8 @@
         
         .heart {
             position: relative;
-            width: 400px;
-            height: 400px;
+            width: 100px;
+            height: 90px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -52,22 +52,16 @@
         .heart::after {
             content: "";
             position: absolute;
-            top: 0;
-            width: 200px;
-            height: 320px;
+            width: 52px;
+            height: 80px;
             background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
-            border-radius: 200px 200px 0 0;
-            box-shadow: 0 20px 60px rgba(255, 107, 107, 0.5);
-        }
-        
-        .heart::before {
-            left: 100px;
+            border-radius: 52px 52px 0 0;
             transform: rotate(-45deg);
             transform-origin: 0 100%;
         }
         
         .heart::after {
-            left: 0;
+            left: 50px;
             transform: rotate(45deg);
             transform-origin: 100% 100%;
         }
