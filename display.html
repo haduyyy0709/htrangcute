@@ -35,29 +35,34 @@
         
         .heart {
             position: relative;
-            width: 100px;
-            height: 90px;
+            width: 400px;
+            height: 400px;
             display: flex;
             justify-content: center;
             align-items: center;
             animation: pulse 1.5s ease-in-out infinite;
-            margin: 0 auto;
         }
         
         .heart::before,
         .heart::after {
             content: "";
             position: absolute;
-            width: 52px;
-            height: 80px;
-            background: #ff6b6b;
-            border-radius: 52px 52px 0 0;
+            top: 0;
+            width: 200px;
+            height: 320px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            border-radius: 200px 200px 0 0;
+            box-shadow: 0 20px 60px rgba(255, 107, 107, 0.5);
+        }
+        
+        .heart::before {
+            left: 100px;
             transform: rotate(-45deg);
             transform-origin: 0 100%;
         }
         
         .heart::after {
-            left: 50px;
+            left: 0;
             transform: rotate(45deg);
             transform-origin: 100% 100%;
         }
