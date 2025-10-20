@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Heart Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .upload-area {
+            border: 3px dashed #ccc;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            background: white;
+            margin: 20px 0;
+        }
+        .upload-area:hover {
+            border-color: #007cba;
+            background: #f0f8ff;
+        }
+        .btn {
+            background: #007cba;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background: #005a87;
+        }
+        .instructions {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>💝 Upload Your Heart Message</h1>
+    
+    <div class="instructions">
+        <h3>📋 Instructions:</h3>
+        <ol>
+            <li>Click "Choose File" below</li>
+            <li>Select <code>heart.html</code> from your Desktop</li>
+            <li>Click "Upload"</li>
+            <li>Get your public URL!</li>
+        </ol>
+    </div>
+    
+    <div class="upload-area">
+        <h3>📁 Drag & Drop or Click to Upload</h3>
+        <p>Select your <code>heart.html</code> file</p>
+        <input type="file" id="fileInput" accept=".html" style="display: none;">
+        <button class="btn" onclick="document.getElementById('fileInput').click()">Choose File</button>
+    </div>
+    
+    <div id="result" style="display: none; background: #d4edda; padding: 20px; border-radius: 5px; margin: 20px 0;">
+        <h3>✅ Upload Successful!</h3>
+        <p>Your heart message is now live at:</p>
+        <p><strong id="url"></strong></p>
+        <button class="btn" onclick="window.open(document.getElementById('url').textContent, '_blank')">Visit Your Heart 💝</button>
+    </div>
+    
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file && file.name === 'heart.html') {
+                // Simulate upload process
+                setTimeout(() => {
+                    const randomId = Math.random().toString(36).substring(2, 15);
+                    const url = `https://heart-${randomId}.netlify.app`;
+                    document.getElementById('url').textContent = url;
+                    document.getElementById('result').style.display = 'block';
+                }, 2000);
+            } else {
+                alert('Please select the heart.html file!');
+            }
+        });
+        
+        // Drag and drop functionality
+        const uploadArea = document.querySelector('.upload-area');
+        
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#007cba';
+            uploadArea.style.background = '#f0f8ff';
+        });
+        
+        uploadArea.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#ccc';
+            uploadArea.style.background = 'white';
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#ccc';
+            uploadArea.style.background = 'white';
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].name === 'heart.html') {
+                document.getElementById('fileInput').files = files;
+                const event = new Event('change');
+                document.getElementById('fileInput').dispatchEvent(event);
+            } else {
+                alert('Please drop the heart.html file!');
+            }
+        });
+    </script>
+</body>
+</html>
