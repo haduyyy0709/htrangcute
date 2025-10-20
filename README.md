@@ -134,7 +134,7 @@ Want to modify the code? Here's what to edit:
 
 ## 🌹 Add your photo (rose frame)
 1. Create folder `assets/` in this project
-2. Put your image as `assets/z7138481686775_3e8c5ed4c2161c4a5f9b7caf5f3b3342.jpg` (square, e.g. 800×800)
+2. Put your image as `assets/photo.jpg` (square, e.g. 800×800)
 3. Open `display.html` or `index.html` to see the framed photo
 
 ## 🌟 Features to Add (Optional)
