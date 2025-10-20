@@ -204,33 +204,16 @@
             <span class="rose rose-right">🌹</span>
             <span class="rose rose-bottom">🌹</span>
             <span class="rose rose-left">🌹</span>
-            <div class="caption-overlay">
-                <div class="caption-text" id="girl-caption">Beautiful Girl 🌹</div>
-            </div>
         </div>
         
         <div class="photo-frame">
             <img class="photo" src="assets/z7138481586211_17e28294b5769684260911c8d3dca482.jpg" alt="Cute Boy">
             <div class="caption-overlay">
-                <div class="caption-text" id="boy-caption">Cute Boy 😊</div>
+                <div class="caption-text" id="boy-caption">Creator</div>
             </div>
         </div>
     </div>
     
-    <!-- Caption Creators -->
-    <div class="caption-creators">
-        <div class="caption-creator">
-            <h3>Add Caption for Girl:</h3>
-            <input type="text" id="girl-caption-input" placeholder="Enter caption for girl..." maxlength="30">
-            <button id="update-girl-caption">Update Girl Caption</button>
-        </div>
-        
-        <div class="caption-creator">
-            <h3>Add Caption for Boy:</h3>
-            <input type="text" id="boy-caption-input" placeholder="Enter caption for boy..." maxlength="30">
-            <button id="update-boy-caption">Update Boy Caption</button>
-        </div>
-    </div>
     
     <div class="sparkles">
         <div class="sparkle"></div>
@@ -262,44 +245,6 @@
             }
         });
         
-        // Caption creator functionality for both photos
-        const girlCaptionInput = document.getElementById('girl-caption-input');
-        const updateGirlButton = document.getElementById('update-girl-caption');
-        const girlCaptionText = document.getElementById('girl-caption');
-        
-        const boyCaptionInput = document.getElementById('boy-caption-input');
-        const updateBoyButton = document.getElementById('update-boy-caption');
-        const boyCaptionText = document.getElementById('boy-caption');
-        
-        function updateCaption(input, button, captionText) {
-            button.addEventListener('click', () => {
-                const newCaption = input.value.trim();
-                if (newCaption) {
-                    captionText.textContent = newCaption;
-                    input.value = '';
-                    
-                    // Add sparkles effect
-                    for (let i = 0; i < 10; i++) {
-                        setTimeout(() => {
-                            const x = captionText.offsetLeft + captionText.offsetWidth/2 + (Math.random() - 0.5) * 100;
-                            const y = captionText.offsetTop + captionText.offsetHeight/2 + (Math.random() - 0.5) * 100;
-                            createSparkle(x, y);
-                        }, i * 100);
-                    }
-                }
-            });
-            
-            // Allow Enter key to update caption
-            input.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    button.click();
-                }
-            });
-        }
-        
-        // Setup caption creators for both photos
-        updateCaption(girlCaptionInput, updateGirlButton, girlCaptionText);
-        updateCaption(boyCaptionInput, updateBoyButton, boyCaptionText);
         
         function createSparkle(x, y) {
             const sparkle = document.createElement('div');
@@ -408,64 +353,6 @@
                 text-align: center;
                 text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
                 animation: fadeInScale 0.5s ease-out;
-            }
-            .caption-creators {
-                margin-top: 30px;
-                display: flex;
-                gap: 30px;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            .caption-creator {
-                text-align: center;
-                background: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(10px);
-                border-radius: 20px;
-                padding: 20px;
-                border: 2px solid rgba(255, 255, 255, 0.2);
-                flex: 1;
-                min-width: 250px;
-            }
-            .caption-creator h3 {
-                color: white;
-                margin-bottom: 15px;
-                text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-            }
-            .caption-creator input {
-                padding: 12px 20px;
-                border: 2px solid rgba(255, 255, 255, 0.3);
-                border-radius: 25px;
-                background: rgba(255, 255, 255, 0.1);
-                color: white;
-                font-size: 16px;
-                text-align: center;
-                margin-right: 10px;
-                backdrop-filter: blur(10px);
-                transition: all 0.3s ease;
-            }
-            .caption-creator input::placeholder {
-                color: rgba(255, 255, 255, 0.7);
-            }
-            .caption-creator input:focus {
-                outline: none;
-                border-color: rgba(255, 255, 255, 0.6);
-                background: rgba(255, 255, 255, 0.2);
-            }
-            .caption-creator button {
-                padding: 12px 25px;
-                background: linear-gradient(45deg, #667eea, #764ba2);
-                border: none;
-                border-radius: 25px;
-                color: white;
-                font-size: 16px;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-            }
-            .caption-creator button:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
             }
         `;
         document.head.appendChild(style);
