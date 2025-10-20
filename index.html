@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Message Generator - Create Beautiful Heart Messages</title>
+    <meta name="description" content="Create and share beautiful animated heart messages with custom greetings, occasions, and color themes. Perfect for birthdays, anniversaries, and special occasions!">
+    <meta name="keywords" content="heart message, love message, greeting card, birthday message, anniversary, romantic message, heart generator">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Heart Message Generator - Create Beautiful Heart Messages">
+    <meta property="og:description" content="Create and share beautiful animated heart messages with custom greetings and color themes!">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/764ba2/ffffff?text=💝+Heart+Message+Generator">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Heart Message Generator">
+    <meta name="twitter:description" content="Create and share beautiful animated heart messages!">
+    <meta name="twitter:image" content="https://via.placeholder.com/1200x630/764ba2/ffffff?text=💝+Heart+Message+Generator">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💝</text></svg>">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Customization Panel -->
+    <div class="customize-panel" id="customizePanel">
+        <div class="panel-content">
+            <h2>💖 Create Your Heart Message</h2>
+            <p class="subtitle">Customize your message and share with loved ones</p>
+            
+            <form id="messageForm" class="message-form">
+                <div class="form-group">
+                    <label for="greeting">Greeting Message:</label>
+                    <input type="text" id="greeting" placeholder="e.g., Chúc bé HTrang" maxlength="50" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="occasion">Occasion/Date:</label>
+                    <input type="text" id="occasion" placeholder="e.g., 20/10" maxlength="30" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subtitle">Subtitle (optional):</label>
+                    <input type="text" id="subtitle" placeholder="e.g., Hạnh phúc & Xinh đẹp" maxlength="50">
+                </div>
+                
+                <div class="form-group">
+                    <label for="colorTheme">Color Theme:</label>
+                    <select id="colorTheme">
+                        <option value="red">❤️ Classic Red</option>
+                        <option value="pink">💗 Sweet Pink</option>
+                        <option value="purple">💜 Royal Purple</option>
+                        <option value="rainbow">🌈 Rainbow</option>
+                        <option value="gold">✨ Golden</option>
+                        <option value="blue">💙 Ocean Blue</option>
+                    </select>
+                </div>
+                
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">Create Heart 💝</button>
+                    <button type="button" class="btn btn-secondary" id="resetBtn">Reset</button>
+                </div>
+            </form>
+            
+            <div class="examples">
+                <p><strong>Examples:</strong></p>
+                <button class="example-btn" data-greeting="Happy Birthday" data-occasion="2024" data-subtitle="Love You Always">Birthday</button>
+                <button class="example-btn" data-greeting="I Love You" data-occasion="❤️" data-subtitle="Forever & Always">Love</button>
+                <button class="example-btn" data-greeting="Happy Anniversary" data-occasion="5 Years" data-subtitle="Together Forever">Anniversary</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Heart Display Container -->
+    <div class="container" id="heartContainer" style="display: none;">
+        <button class="back-btn" id="backBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>Edit Message</span>
+        </button>
+        
+        <button class="share-btn" id="shareBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+            <span>Share</span>
+        </button>
+        
+        <button class="generate-btn" id="generateBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Generate Page</span>
+        </button>
+        
+        <div class="heart-wrapper">
+            <div class="heart">
+                <div class="message">
+                    <h1 id="displayGreeting">Chúc chị HTrang</h1>
+                    <h2 id="displayOccasion">20/10</h2>
+                    <p id="displaySubtitle">Hạnh phúc & Xinh đẹp</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Rose-framed photo shown under the heart -->
+        <div class="photo-frame">
+            <img class="photo" src="assets/photo.jpg" alt="HTrang">
+            <span class="rose rose-top">🌹</span>
+            <span class="rose rose-right">🌹</span>
+            <span class="rose rose-bottom">🌹</span>
+            <span class="rose rose-left">🌹</span>
+        </div>
+        <div class="sparkles">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="modal" id="shareModal">
+        <div class="modal-content">
+            <h3>Share Your Heart 💝</h3>
+            <p>Your message has been saved! Share the link:</p>
+            <div class="share-link-container">
+                <input type="text" id="shareLink" readonly>
+                <button id="copyLinkBtn" class="btn btn-primary">Copy Link</button>
+            </div>
+            <p class="share-tip">Or share directly:</p>
+            <div class="social-share">
+                <button class="social-btn facebook" id="shareFacebook">Facebook</button>
+                <button class="social-btn twitter" id="shareTwitter">Twitter</button>
+                <button class="social-btn whatsapp" id="shareWhatsapp">WhatsApp</button>
+            </div>
+            <button class="btn btn-secondary" id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
