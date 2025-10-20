@@ -17,6 +17,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
@@ -26,6 +27,9 @@
             position: relative;
             z-index: 10;
             animation: float 3s ease-in-out infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         @keyframes float {
@@ -41,6 +45,7 @@
             justify-content: center;
             align-items: center;
             animation: pulse 1.5s ease-in-out infinite;
+            margin: 0 auto;
         }
         
         .heart::before,
@@ -81,6 +86,10 @@
             animation: fadeInScale 1s ease-out;
             max-width: 90%;
             word-wrap: break-word;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         
         @keyframes fadeInScale {
