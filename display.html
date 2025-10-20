@@ -198,18 +198,10 @@
     <div class="photos-container">
         <div class="photo-frame">
             <img class="photo" src="assets/z7138481686775_3e8c5ed4c2161c4a5f9b7caf5f3b3342.jpg" alt="HTrang">
-            <span class="rose rose-top">🌹</span>
-            <span class="rose rose-right">🌹</span>
-            <span class="rose rose-bottom">🌹</span>
-            <span class="rose rose-left">🌹</span>
         </div>
         
         <div class="photo-frame">
             <img class="photo" src="assets/cute-boy.jpg" alt="Cute Boy">
-            <span class="rose rose-top">🌹</span>
-            <span class="rose rose-right">🌹</span>
-            <span class="rose rose-bottom">🌹</span>
-            <span class="rose rose-left">🌹</span>
         </div>
     </div>
     
@@ -270,15 +262,56 @@
                 100% { opacity: 0; transform: scale(0) translateY(-40px); }
             }
             .photos-container { display: flex; gap: 30px; justify-content: center; align-items: center; margin-top: 30px; flex-wrap: wrap; }
-            .photo-frame { position: relative; width: 200px; height: 200px; border-radius: 50%; padding: 8px; background: conic-gradient(#ff7aa2, #ff9fb8, #ffa7c2, #ff7aa2); box-shadow: 0 15px 40px rgba(255, 122, 162, 0.35); }
-            .photo-frame::before { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), rgba(255,255,255,0) 60%); pointer-events: none; }
-            .photo { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 6px solid #ffe2ec; }
-            .rose { position: absolute; font-size: 26px; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.25)); animation: sway 3s ease-in-out infinite; }
-            .rose-top { top: -10px; left: 50%; transform: translate(-50%, -50%); }
-            .rose-right { right: -4px; top: 50%; transform: translate(50%, -50%) rotate(15deg); animation-delay: .3s; }
-            .rose-bottom { bottom: -6px; left: 50%; transform: translate(-50%, 50%) rotate(8deg); animation-delay: .6s; }
-            .rose-left { left: -4px; top: 50%; transform: translate(-50%, -50%) rotate(-15deg); animation-delay: .9s; }
-            @keyframes sway { 0%,100% { transform: translate(-50%, -50%) rotate(0deg); } 50% { transform: translate(-50%, -55%) rotate(6deg); } }
+            .photo-frame { 
+                position: relative; 
+                width: 200px; 
+                height: 200px; 
+                border-radius: 50%; 
+                padding: 4px; 
+                background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe);
+                background-size: 400% 400%;
+                animation: gradientShift 3s ease infinite;
+                box-shadow: 
+                    0 0 20px rgba(102, 126, 234, 0.6),
+                    0 0 40px rgba(118, 75, 162, 0.4),
+                    inset 0 0 20px rgba(255, 255, 255, 0.1);
+                border: 3px solid rgba(255, 255, 255, 0.3);
+            }
+            .photo-frame::before { 
+                content: ""; 
+                position: absolute; 
+                inset: 8px; 
+                border-radius: 50%; 
+                background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2), rgba(255,255,255,0) 60%); 
+                pointer-events: none;
+                animation: pulse 2s ease-in-out infinite;
+            }
+            .photo-frame::after {
+                content: "";
+                position: absolute;
+                inset: -2px;
+                border-radius: 50%;
+                background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
+                animation: rotate 4s linear infinite;
+                z-index: -1;
+            }
+            .photo { 
+                width: 100%; 
+                height: 100%; 
+                object-fit: cover; 
+                border-radius: 50%; 
+                border: 2px solid rgba(255, 255, 255, 0.8);
+                box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+            }
+            @keyframes gradientShift {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            @keyframes rotate {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
         `;
         document.head.appendChild(style);
     </script>
