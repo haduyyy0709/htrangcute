@@ -178,6 +178,8 @@
             .message h1 { font-size: 1.5rem; }
             .message h2 { font-size: 1.8rem; }
             .message p { font-size: 0.9rem; }
+            .photos-container { flex-direction: column; gap: 20px; }
+            .photo-frame { width: 180px; height: 180px; }
         }
     </style>
 </head>
@@ -192,13 +194,23 @@
         </div>
     </div>
     
-    <!-- Rose-framed photo -->
-    <div class="photo-frame">
-        <img class="photo" src="assets/z7138481686775_3e8c5ed4c2161c4a5f9b7caf5f3b3342.jpg" alt="HTrang">
-        <span class="rose rose-top">🌹</span>
-        <span class="rose rose-right">🌹</span>
-        <span class="rose rose-bottom">🌹</span>
-        <span class="rose rose-left">🌹</span>
+    <!-- Rose-framed photos -->
+    <div class="photos-container">
+        <div class="photo-frame">
+            <img class="photo" src="assets/z7138481686775_3e8c5ed4c2161c4a5f9b7caf5f3b3342.jpg" alt="HTrang">
+            <span class="rose rose-top">🌹</span>
+            <span class="rose rose-right">🌹</span>
+            <span class="rose rose-bottom">🌹</span>
+            <span class="rose rose-left">🌹</span>
+        </div>
+        
+        <div class="photo-frame">
+            <img class="photo" src="assets/cute-boy.jpg" alt="Cute Boy">
+            <span class="rose rose-top">🌹</span>
+            <span class="rose rose-right">🌹</span>
+            <span class="rose rose-bottom">🌹</span>
+            <span class="rose rose-left">🌹</span>
+        </div>
     </div>
     
     <div class="sparkles">
@@ -257,7 +269,8 @@
                 50% { opacity: 1; transform: scale(1) translateY(-20px); }
                 100% { opacity: 0; transform: scale(0) translateY(-40px); }
             }
-            .photo-frame { position: relative; width: 240px; height: 240px; margin: 30px auto 0; border-radius: 50%; padding: 8px; background: conic-gradient(#ff7aa2, #ff9fb8, #ffa7c2, #ff7aa2); box-shadow: 0 15px 40px rgba(255, 122, 162, 0.35); }
+            .photos-container { display: flex; gap: 30px; justify-content: center; align-items: center; margin-top: 30px; flex-wrap: wrap; }
+            .photo-frame { position: relative; width: 200px; height: 200px; border-radius: 50%; padding: 8px; background: conic-gradient(#ff7aa2, #ff9fb8, #ffa7c2, #ff7aa2); box-shadow: 0 15px 40px rgba(255, 122, 162, 0.35); }
             .photo-frame::before { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), rgba(255,255,255,0) 60%); pointer-events: none; }
             .photo { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 6px solid #ffe2ec; }
             .rose { position: absolute; font-size: 26px; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.25)); animation: sway 3s ease-in-out infinite; }
