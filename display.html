@@ -196,8 +196,12 @@
     
     <!-- Rose-framed photos -->
     <div class="photos-container">
-        <div class="photo-frame">
+        <div class="photo-frame rose-frame">
             <img class="photo" src="assets/z7138481686775_3e8c5ed4c2161c4a5f9b7caf5f3b3342.jpg" alt="HTrang">
+            <span class="rose rose-top">🌹</span>
+            <span class="rose rose-right">🌹</span>
+            <span class="rose rose-bottom">🌹</span>
+            <span class="rose rose-left">🌹</span>
         </div>
         
         <div class="photo-frame">
@@ -316,6 +320,12 @@
                     inset 0 0 20px rgba(255, 255, 255, 0.1);
                 border: 3px solid rgba(255, 255, 255, 0.3);
             }
+            .rose-frame {
+                background: conic-gradient(#ff7aa2, #ff9fb8, #ffa7c2, #ff7aa2);
+                animation: none;
+                box-shadow: 0 15px 40px rgba(255, 122, 162, 0.35);
+                border: 3px solid rgba(255, 255, 255, 0.3);
+            }
             .photo-frame::before { 
                 content: ""; 
                 position: absolute; 
@@ -351,6 +361,12 @@
                 0% { transform: rotate(0deg); }
                 100% { transform: rotate(360deg); }
             }
+            .rose { position: absolute; font-size: 26px; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.25)); animation: sway 3s ease-in-out infinite; }
+            .rose-top { top: -10px; left: 50%; transform: translate(-50%, -50%); }
+            .rose-right { right: -4px; top: 50%; transform: translate(50%, -50%) rotate(15deg); animation-delay: .3s; }
+            .rose-bottom { bottom: -6px; left: 50%; transform: translate(-50%, 50%) rotate(8deg); animation-delay: .6s; }
+            .rose-left { left: -4px; top: 50%; transform: translate(-50%, -50%) rotate(-15deg); animation-delay: .9s; }
+            @keyframes sway { 0%,100% { transform: translate(-50%, -50%) rotate(0deg); } 50% { transform: translate(-50%, -55%) rotate(6deg); } }
             .caption-overlay {
                 position: absolute;
                 bottom: 10px;
