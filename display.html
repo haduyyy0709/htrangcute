@@ -202,7 +202,17 @@
         
         <div class="photo-frame">
             <img class="photo" src="assets/z7138481586211_17e28294b5769684260911c8d3dca482.jpg" alt="Cute Boy">
+            <div class="caption-overlay">
+                <div class="caption-text" id="boy-caption">Cute Boy 😊</div>
+            </div>
         </div>
+    </div>
+    
+    <!-- Caption Creator -->
+    <div class="caption-creator">
+        <h3>Add Caption for Cute Boy:</h3>
+        <input type="text" id="caption-input" placeholder="Enter caption..." maxlength="30">
+        <button id="update-caption">Update Caption</button>
     </div>
     
     <div class="sparkles">
@@ -232,6 +242,35 @@
                     const y = e.clientY + (Math.random() - 0.5) * 200;
                     createSparkle(x, y);
                 }, i * 50);
+            }
+        });
+        
+        // Caption creator functionality
+        const captionInput = document.getElementById('caption-input');
+        const updateButton = document.getElementById('update-caption');
+        const captionText = document.getElementById('boy-caption');
+        
+        updateButton.addEventListener('click', () => {
+            const newCaption = captionInput.value.trim();
+            if (newCaption) {
+                captionText.textContent = newCaption;
+                captionInput.value = '';
+                
+                // Add sparkles effect
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(() => {
+                        const x = captionText.offsetLeft + captionText.offsetWidth/2 + (Math.random() - 0.5) * 100;
+                        const y = captionText.offsetTop + captionText.offsetHeight/2 + (Math.random() - 0.5) * 100;
+                        createSparkle(x, y);
+                    }, i * 100);
+                }
+            }
+        });
+        
+        // Allow Enter key to update caption
+        captionInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                updateButton.click();
             }
         });
         
@@ -311,6 +350,75 @@
             @keyframes rotate {
                 0% { transform: rotate(0deg); }
                 100% { transform: rotate(360deg); }
+            }
+            .caption-overlay {
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0, 0, 0, 0.7);
+                border-radius: 20px;
+                padding: 8px 16px;
+                backdrop-filter: blur(10px);
+                z-index: 10;
+            }
+            .caption-text {
+                color: white;
+                font-size: 14px;
+                font-weight: 600;
+                text-align: center;
+                text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+                animation: fadeInScale 0.5s ease-out;
+            }
+            .caption-creator {
+                margin-top: 30px;
+                text-align: center;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border-radius: 20px;
+                padding: 20px;
+                border: 2px solid rgba(255, 255, 255, 0.2);
+            }
+            .caption-creator h3 {
+                color: white;
+                margin-bottom: 15px;
+                text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            }
+            .caption-creator input {
+                padding: 12px 20px;
+                border: 2px solid rgba(255, 255, 255, 0.3);
+                border-radius: 25px;
+                background: rgba(255, 255, 255, 0.1);
+                color: white;
+                font-size: 16px;
+                text-align: center;
+                margin-right: 10px;
+                backdrop-filter: blur(10px);
+                transition: all 0.3s ease;
+            }
+            .caption-creator input::placeholder {
+                color: rgba(255, 255, 255, 0.7);
+            }
+            .caption-creator input:focus {
+                outline: none;
+                border-color: rgba(255, 255, 255, 0.6);
+                background: rgba(255, 255, 255, 0.2);
+            }
+            .caption-creator button {
+                padding: 12px 25px;
+                background: linear-gradient(45deg, #667eea, #764ba2);
+                border: none;
+                border-radius: 25px;
+                color: white;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            }
+            .caption-creator button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
             }
         `;
         document.head.appendChild(style);
